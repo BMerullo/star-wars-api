@@ -1,0 +1,115 @@
+.body {
+  
+}
+
+.App {
+  background-image:url('./images/tat_img.png');
+  text-align: center;
+  padding: 50px 100px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  /* position:fixed;  */
+  top: 0; 
+  width: 100%; 
+}
+
+.nav.nav-tab {
+  margin-bottom: 50px;
+}
+
+.active-tab{
+  background-color: #fed40f;
+  color: black;
+}
+
+h1 {
+  color: #fed40f;
+}
+
+h2 {
+  color: black;
+  font-weight: 600;
+}
+
+.logo {
+  margin-bottom: 30px;
+  background-blend-mode: overlay;
+}
+
+p {
+  color: #fed40f;
+}
+
+.content-container {
+  border: solid #111 3px;
+  background-color: #333;
+  width: 150px;
+  margin-top: 5px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+    
+}
+
+.content-container-active {
+  border: solid #111 3px;
+  background-color: #777;
+  color:#333;
+  width: 150px;
+  margin-top: 5px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.display-one-container {
+  /* background-color: #444; */
+  border: solid #fed40f 2px;
+  width: 50%;
+  height: 100%;
+  margin: auto;
+  margin-left: 260px;
+  padding: 100px;
+}
+
+.movie-display-one-container {
+    
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    padding-right: 160px; 
+  }
+
+
+.display-flex {
+  display: flex;
+  margin-top: 30px;
+}
+
+.display-one-text {
+  color: #999;
+  font-weight: 800;
+}
+
+.movie-title {
+  color: #fed40f;
+  text-decoration: underline;
+}
+
+.name-style {
+  color: #fed40f;
+  text-decoration: underline;
+  margin-bottom: 30px;
+}
+
+.errors {
+  color: red;
+}
+
