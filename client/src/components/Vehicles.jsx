@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
+import Footer from './Footer';
 
 const Vehicles = (props) => {
 
@@ -46,6 +47,7 @@ const Vehicles = (props) => {
     }
 
     return (
+        <>
         <div className="display-flex">
             <div>
                 {
@@ -73,6 +75,8 @@ const Vehicles = (props) => {
             
             </div>
         </div>
+        <Footer/>
+        </>
     )
 }
 

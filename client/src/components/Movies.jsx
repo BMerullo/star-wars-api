@@ -49,7 +49,7 @@ const Movies = (props) => {
         else return "content-container"
     }
     return (
-        <div>
+        <>
             <div className="display-flex">
                 <div>
                     {
@@ -74,7 +74,7 @@ const Movies = (props) => {
                 </div>
             </div>
             <Footer/>
-        </div>
+        </>
 
     )
 }

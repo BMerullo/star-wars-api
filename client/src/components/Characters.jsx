@@ -52,7 +52,7 @@ const Characters = (props) => {
 
 
     return (
-        <div>
+        <>
             <div className="display-flex">
                 <div>
                     {
@@ -79,7 +79,7 @@ const Characters = (props) => {
                 </div>
             </div>
             <Footer />
-        </div>
+        </>
     )
 }
 

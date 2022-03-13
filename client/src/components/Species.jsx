@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
+import Footer from './Footer';
 
 
 const Species = (props) => {
@@ -48,6 +49,7 @@ const Species = (props) => {
     }
 
     return(
+        <>
         <div className="display-flex">
             <div>
                 {
@@ -71,6 +73,8 @@ const Species = (props) => {
             <p className="display-one-text"></p>
             </div>
         </div>
+        <Footer/>
+        </>
     )
 }
 
