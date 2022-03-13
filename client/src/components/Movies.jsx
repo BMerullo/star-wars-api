@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
+import Footer from './Footer';
 
 const Movies = (props) => {
 
@@ -24,21 +25,21 @@ const Movies = (props) => {
                 setMovie(res.data)
             })
             .catch((err) => console.log(err))
-        
+
 
     }, [id])
 
     const displayOneMovie = (url, index) => {
         axios
-        .get(`${url}/`)
-        .then((res) => {
-            console.log("Display One")
-            console.log(res.data)
-            setMovie(res.data)
-            setActiveMovie(index)
-        })
-        .catch((err) => console.log(err))
-        
+            .get(`${url}/`)
+            .then((res) => {
+                console.log("Display One")
+                console.log(res.data)
+                setMovie(res.data)
+                setActiveMovie(index)
+            })
+            .catch((err) => console.log(err))
+
     }
 
     const styleBox = (index) => {
@@ -48,28 +49,31 @@ const Movies = (props) => {
         else return "content-container"
     }
     return (
-        <div className="display-flex">
-            <div>
-                {
-                    movies.map((film, index) => (
-                        <div key={film.name} className={styleBox(index)}>
-                            <Link to={`/characters/${index + 1}`} className="link" onClick={() => displayOneMovie(film.url, index)}>
-                                <p>
-                                    {film.title}
-                                </p>
-                            </Link>
-                        </div>
-                    ))
-                }
+        <div>
+            <div className="display-flex">
+                <div>
+                    {
+                        movies.map((film, index) => (
+                            <div key={film.name} className={styleBox(index)}>
+                                <Link to={`/characters/${index + 1}`} className="link" onClick={() => displayOneMovie(film.url, index)}>
+                                    <p>
+                                        {film.title}
+                                    </p>
+                                </Link>
+                            </div>
+                        ))
+                    }
+                </div>
+                <div className="movie-display-one-container">
+                    <p>Episode: {movie.episode_id}</p>
+                    <h2 className="movie-title">{movie.title}</h2>
+                    <p className="display-one-text"></p>
+                    <p >{movie.opening_crawl}</p>
+                    <p className="display-one-text">Director: {movie.director}</p>
+                    <p className="display-one-text">Release Date: {movie.release_date}</p>
+                </div>
             </div>
-            <div className="movie-display-one-container">
-                <p>Episode: {movie.episode_id}</p>
-                <h2 className="movie-title">{movie.title}</h2>
-                <p className="display-one-text"></p>
-                <p >{movie.opening_crawl}</p>
-                <p className="display-one-text">Director: {movie.director}</p>
-                <p className="display-one-text">Release Date: {movie.release_date}</p>
-            </div>
+            <Footer/>
         </div>
 
     )

@@ -52,31 +52,33 @@ const Characters = (props) => {
 
 
     return (
-        <div className="display-flex">
-            <div>
-                {
-                    people.map((people, index) => (
-                        <div key={people.name} className={styleBox(index)}>
-                            <Link to={`/characters/${index + 1}`} className="link" onClick={() => displayOne(people.url, index)}>
-                                <p>
-                                    {people.name}
-                                </p>
-                            </Link>
-                        </div>
-                    ))
-                }
+        <div>
+            <div className="display-flex">
+                <div>
+                    {
+                        people.map((people, index) => (
+                            <div key={people.name} className={styleBox(index)}>
+                                <Link to={`/characters/${index + 1}`} className="link" onClick={() => displayOne(people.url, index)}>
+                                    <p>
+                                        {people.name}
+                                    </p>
+                                </Link>
+                            </div>
+                        ))
+                    }
+                </div>
+                <div className="display-one-container">
+                    <h2 className="name-style">{person.name}</h2>
+                    <p className="display-one-text">Hair Color: {person.hair_color}</p>
+                    <p className="display-one-text">Eye Color: {person.eye_color}</p>
+                    <p className="display-one-text">Skin Color: {person.skin_color}</p>
+                    <p className="display-one-text">Height: {person.height}</p>
+                    <p className="display-one-text">Mass: {person.mass}</p>
+                    <p className="display-one-text">Gender: {person.gender}</p>
+                    <p className="display-one-text">Birth Year: {person.birth_year}</p>
+                </div>
             </div>
-            <div className="display-one-container">
-                <h2 className="name-style">{person.name}</h2>
-                <p className="display-one-text">Hair Color: {person.hair_color}</p>
-                <p className="display-one-text">Eye Color: {person.eye_color}</p>
-                <p className="display-one-text">Skin Color: {person.skin_color}</p>
-                <p className="display-one-text">Height: {person.height}</p>
-                <p className="display-one-text">Mass: {person.mass}</p>
-                <p className="display-one-text">Gender: {person.gender}</p>
-                <p className="display-one-text">Birth Year: {person.birth_year}</p>
-            </div>
-            <Footer/>
+            <Footer />
         </div>
     )
 }

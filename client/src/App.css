@@ -1,11 +1,9 @@
-.body {
-  
-}
+
 
 .App {
   background-image:url('./images/tat_img.png');
   text-align: center;
-  padding: 50px 100px;
+  /* padding: 50px 100px 0px 100px; */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -16,7 +14,7 @@
   width: 100%; 
 }
 
-.nav.nav-tab {
+.nav-tab {
   margin-bottom: 50px;
 }
 
@@ -29,13 +27,17 @@ h1 {
   color: #fed40f;
 }
 
+.footer-text {
+  color: black;
+}
+
 h2 {
   color: black;
   font-weight: 600;
 }
 
 .logo {
-  margin-bottom: 30px;
+  margin: 30px 0px;
   background-blend-mode: overlay;
 }
 
@@ -90,7 +92,8 @@ p {
 
 .display-flex {
   display: flex;
-  margin-top: 30px;
+  margin: 30px 0px 50px 0px;
+  padding: 50px;
 }
 
 .display-one-text {
@@ -109,18 +112,21 @@ p {
   margin-bottom: 30px;
 }
 
-.errors {
+/* .errors {
   color: red;
-}
+} */
 
 footer {
   border-top: solid black 1px ;
   display: flex;
-  align-items:baseline;
+  align-items:center;
   justify-content: space-evenly;
   padding: 50px 0px;
   /* width: 85%; */
   margin: auto;
+  background-color: white;
+  color: black;
+  width: 100%;
 
 }
 
