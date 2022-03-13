@@ -113,3 +113,22 @@ p {
   color: red;
 }
 
+footer {
+  border-top: solid black 1px ;
+  display: flex;
+  align-items:baseline;
+  justify-content: space-evenly;
+  padding: 50px 0px;
+  /* width: 85%; */
+  margin: auto;
+
+}
+
+.list {
+  list-style: none;
+}
+
+.list-label {
+  font-weight: bold;
+}
+
