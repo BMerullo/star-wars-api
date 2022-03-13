@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
+import Footer from './Footer';
 
 const Planets = (props) => {
 
@@ -46,6 +47,7 @@ const Planets = (props) => {
     
 
     return (
+        <>
         <div className="display-flex">
             <div>
                 {
@@ -73,6 +75,8 @@ const Planets = (props) => {
 
             </div>
         </div>
+        <Footer/>
+        </>
     )
 }
 
