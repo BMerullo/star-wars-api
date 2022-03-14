@@ -138,3 +138,15 @@ footer {
   font-weight: bold;
 }
 
+.page-counter-div {
+  display:flex;
+  justify-content:left;
+  width: 150px;
+  margin-right: 25px;
+  padding-bottom: 15px;
+}
+
+.nav-button {
+  background-color: #111 ;
+  color: #fed40f;
+}

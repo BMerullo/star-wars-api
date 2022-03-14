@@ -8,9 +8,10 @@ const Planets = (props) => {
     const [planet, setPlanet] = useState({});
     const { planets, setPlanets, id } = props
     const [activePlanet, setActivePlanet] = useState(0)
+    const [num, setNum] = useState(1)
     useEffect(() => {
         axios
-            .get("https://swapi.dev/api/planets/")
+            .get(`https://swapi.dev/api/planets/?page=${num}`)
             .then((res) => {
                 console.log("these are the results")
                 console.log(res.data.results)
@@ -26,7 +27,7 @@ const Planets = (props) => {
             })
             .catch((err) => console.log(err))
 
-    }, [id])
+    }, [num])
     const displayOnePlanet = (url, index) => {
         axios
             .get(`${url}/`)
@@ -44,12 +45,32 @@ const Planets = (props) => {
         }
         else return "content-container"
     }
+
+    const next = () => {
+        setNum(num + 1)
+        console.log(num)
+    }
+
+    const prev = () => {
+        setNum(num - 1)
+        console.log(num)
+    }
     
 
     return (
         <>
         <div className="display-flex">
             <div>
+            <div>
+                        {num > 1 ?
+                            <button className="nav-button" onClick={prev}>Prev</button>
+                            : null
+                        }
+                        {num < 6 ?
+                            <button className="nav-button" onClick={next}>Next</button>
+                            : null
+                        }
+                    </div>
                 {
                     planets.map((rock, index) => (
                         <div key={rock.name} className={styleBox(index)}>

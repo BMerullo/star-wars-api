@@ -11,9 +11,9 @@ const Characters = (props) => {
     const [activeCharacter, setActiveCharacter] = useState(0)
     const [num, setNum] = useState(1)
 
-    useEffect((id) => {
+    useEffect(() => {
         axios
-            .get("https://swapi.dev/api/people/")
+            .get(`https://swapi.dev/api/people/?page=${num}`)
             .then((res) => {
                 console.log("these are the results")
                 console.log(res.data.results)
@@ -29,32 +29,16 @@ const Characters = (props) => {
             })
             .catch((err) => console.log(err))
 
-    }, [id])
+    }, [num])
 
     const next = () => {
-        setNum(num +1)
+        setNum(num + 1)
         console.log(num)
-        axios
-        .get(`https://swapi.dev/api/people/?page=${num}`)
-        .then((res)=> {
-        console.log("Results of next")
-        console.log(res.data.results)
-        setPeople(res.data.results)
-        })
-        .catch((err) => console.log(err))
     }
 
     const prev = () => {
-        setNum(num -1)
+        setNum(num - 1)
         console.log(num)
-        axios
-        .get(`https://swapi.dev/api/people/?page=${num}`)
-        .then((res)=> {
-        console.log("Results of prev")
-        console.log(res.data.results)
-        setPeople(res.data.results)
-        })
-        .catch((err) => console.log(err))
     }
 
     const displayOne = (url, index) => {
@@ -80,12 +64,18 @@ const Characters = (props) => {
 
     return (
         <>
-                <div>
-                    <button onClick={prev}>Prev</button>
-                    <button onClick={next}>Next</button>
-                </div>
             <div className="display-flex">
-                <div>
+                <div className="some-div">
+                    <div>
+                        { num > 1?
+                        <button className="nav-button" onClick={prev}>Prev</button>
+                        :null
+                        }
+                        { num < 9 ?
+                            <button className="nav-button" onClick={next}>Next</button>
+                            :null
+                        }
+                    </div>
                     {
                         people.map((people, index) => (
                             <div key={people.name} className={styleBox(index)}>

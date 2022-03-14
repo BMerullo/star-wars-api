@@ -8,11 +8,12 @@ const Spaceships = (props) => {
 
     const [spaceship, setSpaceship] = useState({});
     const { spaceships, setSpaceships, id } = props;
-    const [activeSpaceship, setActiveSpaceship] = useState(0)
+    const [activeSpaceship, setActiveSpaceship] = useState(0);
+    const [num, setNum] =useState(1)
 
     useEffect(() => {
         axios
-            .get("https://swapi.dev/api/starships/")
+            .get(`https://swapi.dev/api/starships/?page=${num}`)
             .then((res) => {
                 console.log("these are the results")
                 console.log(res.data.results)
@@ -28,7 +29,17 @@ const Spaceships = (props) => {
             })
             .catch((err) => console.log(err))
 
-    }, [id])
+    }, [num])
+
+    const next = () => {
+        setNum(num + 1)
+        console.log(num)
+    }
+
+    const prev = () => {
+        setNum(num - 1)
+        console.log(num)
+    }
 
     const displayOneSpaceship = (url, index) => {
 
@@ -53,6 +64,16 @@ const Spaceships = (props) => {
         <>
             <div className="display-flex">
                 <div>
+                <div>
+                        { num > 1?
+                        <button className="nav-button" onClick={prev}>Prev</button>
+                        :null
+                        }
+                        { num < 4 ?
+                            <button className="nav-button" onClick={next}>Next</button>
+                            :null
+                        }
+                    </div>
                     {
                         spaceships.map((ship, index) => (
                             <div key={ship.name} className={styleBox(index)}>
