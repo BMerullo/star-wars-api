@@ -60,6 +60,7 @@ const Vehicles = (props) => {
 
     return (
         <>
+
             <div className="display-flex">
                 <div>
                     <div>
@@ -98,6 +99,7 @@ const Vehicles = (props) => {
                 </div>
             </div>
             <Footer />
+
         </>
     )
 }

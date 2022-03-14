@@ -49,6 +49,7 @@ const Species = (props) => {
         else return "content-container"
     }
 
+
     const next = () => {
         setNum(num + 1)
         console.log(num)
@@ -93,6 +94,7 @@ const Species = (props) => {
                 </div>
             </div>
             <Footer />
+
         </>
     )
 }

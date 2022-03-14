@@ -8,8 +8,10 @@ const Spaceships = (props) => {
 
     const [spaceship, setSpaceship] = useState({});
     const { spaceships, setSpaceships, id } = props;
+
     const [activeSpaceship, setActiveSpaceship] = useState(0);
     const [num, setNum] =useState(1)
+
 
     useEffect(() => {
         axios
@@ -29,6 +31,7 @@ const Spaceships = (props) => {
             })
             .catch((err) => console.log(err))
 
+
     }, [num])
 
     const next = () => {
@@ -40,6 +43,7 @@ const Spaceships = (props) => {
         setNum(num - 1)
         console.log(num)
     }
+
 
     const displayOneSpaceship = (url, index) => {
 
@@ -64,6 +68,7 @@ const Spaceships = (props) => {
         <>
             <div className="display-flex">
                 <div>
+
                 <div>
                         { num > 1?
                         <button className="nav-button" onClick={prev}>Prev</button>
@@ -74,6 +79,7 @@ const Spaceships = (props) => {
                             :null
                         }
                     </div>
+
                     {
                         spaceships.map((ship, index) => (
                             <div key={ship.name} className={styleBox(index)}>

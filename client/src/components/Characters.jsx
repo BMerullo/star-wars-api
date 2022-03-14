@@ -9,9 +9,11 @@ const Characters = (props) => {
     const [person, setPerson] = useState({})
     const { people, setPeople, id } = props
     const [activeCharacter, setActiveCharacter] = useState(0)
+
     const [num, setNum] = useState(1)
 
     useEffect(() => {
+
         axios
             .get(`https://swapi.dev/api/people/?page=${num}`)
             .then((res) => {
@@ -29,6 +31,7 @@ const Characters = (props) => {
             })
             .catch((err) => console.log(err))
 
+
     }, [num])
 
     const next = () => {
@@ -40,6 +43,7 @@ const Characters = (props) => {
         setNum(num - 1)
         console.log(num)
     }
+
 
     const displayOne = (url, index) => {
         // e.preventDefault()
@@ -65,6 +69,7 @@ const Characters = (props) => {
     return (
         <>
             <div className="display-flex">
+
                 <div className="some-div">
                     <div>
                         { num > 1?
@@ -76,6 +81,7 @@ const Characters = (props) => {
                             :null
                         }
                     </div>
+
                     {
                         people.map((people, index) => (
                             <div key={people.name} className={styleBox(index)}>
