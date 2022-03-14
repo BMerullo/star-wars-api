@@ -7,12 +7,13 @@ import Footer from './Footer';
 const Species = (props) => {
 
     const [oneSpecies, setOneSpecies] = useState({});
-    const {species, setSpecies, id} = props;
-    const [activeSpecies, setActiveSpecies] = useState(0)
+    const { species, setSpecies, id } = props;
+    const [activeSpecies, setActiveSpecies] = useState(0);
+    const [num, setNum] = useState(1)
 
     useEffect((id) => {
         axios
-            .get("https://swapi.dev/api/species/")
+            .get(`https://swapi.dev/api/species/?page=${num}`)
             .then((res) => {
                 console.log("these are the results")
                 console.log(res.data.results)
@@ -28,7 +29,7 @@ const Species = (props) => {
             })
             .catch((err) => console.log(err))
 
-    }, [id])
+    }, [num])
 
     const displayOneSpecies = (url, index) => {
         axios
@@ -48,32 +49,52 @@ const Species = (props) => {
         else return "content-container"
     }
 
-    return(
+
+    const next = () => {
+        setNum(num + 1)
+        console.log(num)
+    }
+
+    const prev = () => {
+        setNum(num - 1)
+        console.log(num)
+    }
+
+    return (
         <>
-        <div className="display-flex">
-            <div>
-                {
-                    species.map((species, index) => (
-                        <div key={species.name} className={styleBox(index)}>
-                            <Link to={`/characters/${index + 1}`} className="link" onClick={() => displayOneSpecies(species.url, index)}>
-                                <p>
-                                    {species.name}
-                                </p>
-                            </Link>
-                        </div>
-                    ))
-                }
+            <div className="display-flex">
+                <div>
+                    {num > 1 ?
+                        <button className="nav-button" onClick={prev}>Prev</button>
+                        : null
+                    }
+                    {num < 4 ?
+                        <button className="nav-button" onClick={next}>Next</button>
+                        : null
+                    }
+                    {
+                        species.map((species, index) => (
+                            <div key={species.name} className={styleBox(index)}>
+                                <Link to={`/characters/${index + 1}`} className="link" onClick={() => displayOneSpecies(species.url, index)}>
+                                    <p>
+                                        {species.name}
+                                    </p>
+                                </Link>
+                            </div>
+                        ))
+                    }
+                </div>
+                <div className="display-one-container">
+                    <h2 className="name-style">{oneSpecies.name}</h2>
+                    <p className="display-one-text">{oneSpecies.classification}</p>
+                    <p className="display-one-text">{oneSpecies.designation}</p>
+                    <p className="display-one-text">Average Life Span: {oneSpecies.average_lifespan}</p>
+                    <p className="display-one-text">Language: {oneSpecies.language}</p>
+                    <p className="display-one-text"></p>
+                </div>
             </div>
-            <div className="display-one-container">
-            <h2 className="name-style">{oneSpecies.name}</h2>
-            <p className="display-one-text">{oneSpecies.classification}</p>
-            <p className="display-one-text">{oneSpecies.designation}</p>
-            <p className="display-one-text">Average Life Span: {oneSpecies.average_lifespan}</p>
-            <p className="display-one-text">Language: {oneSpecies.language}</p>
-            <p className="display-one-text"></p>
-            </div>
-        </div>
-        <Footer/>
+            <Footer />
+
         </>
     )
 }

@@ -10,9 +10,12 @@ const Characters = (props) => {
     const { people, setPeople, id } = props
     const [activeCharacter, setActiveCharacter] = useState(0)
 
-    useEffect((id) => {
+    const [num, setNum] = useState(1)
+
+    useEffect(() => {
+
         axios
-            .get("https://swapi.dev/api/people/")
+            .get(`https://swapi.dev/api/people/?page=${num}`)
             .then((res) => {
                 console.log("these are the results")
                 console.log(res.data.results)
@@ -28,7 +31,19 @@ const Characters = (props) => {
             })
             .catch((err) => console.log(err))
 
-    }, [id])
+
+    }, [num])
+
+    const next = () => {
+        setNum(num + 1)
+        console.log(num)
+    }
+
+    const prev = () => {
+        setNum(num - 1)
+        console.log(num)
+    }
+
 
     const displayOne = (url, index) => {
         // e.preventDefault()
@@ -54,7 +69,19 @@ const Characters = (props) => {
     return (
         <>
             <div className="display-flex">
-                <div>
+
+                <div className="some-div">
+                    <div>
+                        { num > 1?
+                        <button className="nav-button" onClick={prev}>Prev</button>
+                        :null
+                        }
+                        { num < 9 ?
+                            <button className="nav-button" onClick={next}>Next</button>
+                            :null
+                        }
+                    </div>
+
                     {
                         people.map((people, index) => (
                             <div key={people.name} className={styleBox(index)}>

@@ -92,7 +92,9 @@ p {
 
 .display-flex {
   display: flex;
-  margin: 30px 0px 100px 0px;
+
+  margin: 30px 0px 300px 0px;
+
   padding: 50px;
 }
 
@@ -108,7 +110,6 @@ p {
 
 .name-style {
   color: #fed40f;
-  text-decoration: underline;
   margin-bottom: 30px;
 }
 
@@ -138,3 +139,15 @@ footer {
   font-weight: bold;
 }
 
+.page-counter-div {
+  display:flex;
+  justify-content:left;
+  width: 150px;
+  margin-right: 25px;
+  padding-bottom: 15px;
+}
+
+.nav-button {
+  background-color: #111 ;
+  color: #fed40f;
+}
